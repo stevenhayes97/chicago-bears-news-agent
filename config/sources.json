@@ -1,26 +1,54 @@
 {
-  "x_handles": {
+  "lookback_days_default": 3,
+  "people": {
     "national": [
-      { "handle": "AdamSchefter", "name": "Adam Schefter" },
-      { "handle": "RapSheet", "name": "Ian Rapoport" }
+      { "name": "Adam Schefter", "search_terms": ["Adam Schefter Bears", "Schefter Chicago Bears"] },
+      { "name": "Ian Rapoport", "search_terms": ["Ian Rapoport Bears", "RapSheet Bears"] }
     ],
-    "local": [
-      { "handle": "AdamHoge", "name": "Adam Hoge" },
-      { "handle": "AdamJahns", "name": "Adam Jahns" },
-      { "handle": "KevinFishbain", "name": "Kevin Fishbain" },
-      { "handle": "BradBiggs", "name": "Brad Biggs (Chicago Tribune)" },
-      { "handle": "CourtneyCronin", "name": "Courtney Cronin (ESPN)" }
-    ],
-    "official_and_outlets": [
-      { "handle": "CHIBears", "name": "Chicago Bears (official)" },
-      { "handle": "BearReport", "name": "The Athletic — Bear Report" }
+    "local_beat": [
+      { "name": "Adam Hoge", "search_terms": ["Adam Hoge Bears"] },
+      { "name": "Adam Jahns", "search_terms": ["Adam Jahns Bears"] },
+      { "name": "Kevin Fishbain", "search_terms": ["Kevin Fishbain Bears", "Fishbain Athletic Bears"] },
+      { "name": "Brad Biggs", "search_terms": ["Brad Biggs Bears", "Biggs Tribune Bears"] },
+      { "name": "Courtney Cronin", "search_terms": ["Courtney Cronin Bears"] }
     ]
   },
-  "web_domains": [
-    "theathletic.com",
-    "espn.com",
-    "chicagobears.com",
-    "nfl.com"
+  "web_sources": {
+    "primary": [
+      { "domain": "theathletic.com", "label": "The Athletic" },
+      { "domain": "espn.com", "label": "ESPN" },
+      { "domain": "chicagobears.com", "label": "Chicago Bears (official)" },
+      { "domain": "nfl.com", "label": "NFL.com" }
+    ],
+    "local": [
+      { "domain": "chicagotribune.com", "label": "Chicago Tribune" },
+      { "domain": "chicago.suntimes.com", "label": "Chicago Sun-Times" },
+      { "domain": "nbcsportschicago.com", "label": "NBC Sports Chicago" },
+      { "domain": "670thescore.com", "label": "670 The Score" }
+    ],
+    "national_nfl": [
+      { "domain": "profootballtalk.nbcsports.com", "label": "ProFootballTalk" },
+      { "domain": "cbssports.com", "label": "CBS Sports" },
+      { "domain": "si.com", "label": "Sports Illustrated" },
+      { "domain": "sports.yahoo.com", "label": "Yahoo Sports" }
+    ],
+    "bears_community": [
+      { "domain": "windycitygridiron.com", "label": "Windy City Gridiron" },
+      { "domain": "bearswire.usatoday.com", "label": "Bears Wire (USA Today)" },
+      { "domain": "secondcityfootball.com", "label": "Second City Football" }
+    ]
+  },
+  "broad_search_queries": [
+    "Chicago Bears news",
+    "Chicago Bears roster injury",
+    "Chicago Bears trade rumor",
+    "Bears press conference",
+    "Chicago Bears game preview recap"
   ],
-  "model": "grok-4.5"
+  "x_handles_reference": {
+    "_note": "Optional context when articles quote X; do not scrape X directly.",
+    "national": ["AdamSchefter", "RapSheet"],
+    "local": ["AdamHoge", "AdamJahns", "KevinFishbain", "BradBiggs", "CourtneyCronin"],
+    "official": ["CHIBears", "BearReport"]
+  }
 }

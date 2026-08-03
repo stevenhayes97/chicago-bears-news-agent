@@ -1,37 +1,62 @@
 ---
 name: bears-newsletter
-description: Generate a Chicago Bears news newsletter using Grok 4.5 X Search and reputable sources. Use when the user asks for Bears news, a digest, or morning brief.
+description: Generate a Chicago Bears news newsletter via Cursor Web Search and reputable web sources. Use when the user asks for Bears news, a digest, or morning brief.
 disable-model-invocation: false
 ---
 
-# Bears newsletter
+# Bears newsletter (Cursor-only)
 
-Generates a 2–10 minute Markdown brief from X and web sources via xAI.
+Generates a 2–10 minute Markdown brief by searching the web and aggregating reporting. No paid xAI or X API keys required.
 
-## Steps
+## Before you write
 
-1. Ensure `XAI_API_KEY` is set (see `.env.example`).
-2. Install deps and run from repo root:
+1. Read `config/sources.json` (domains, people, broad queries, default lookback).
+2. Read `scripts/prompts/newsletter_system.txt` and follow it exactly for tone, quality bar, and output sections.
 
-```bash
-pip install -r requirements.txt
-python3 scripts/generate_bears_newsletter.py --days 3
-```
+## Search strategy
 
-3. Return the script output to the user unchanged (formatting intact).
+Use **Web Search** (multiple queries). Aim for breadth without duplicate fluff.
 
-## Flags
+**Lookback:** Default `{N}` = `lookback_days_default` from config (usually 3). Honor user requests (e.g. “today only” → 1 day, “past week” → 7).
 
-| Flag | Purpose |
-|------|---------|
-| `--days N` | Lookback window (default 3) |
-| `--stdout-only` | Skip writing `newsletters/` |
-| `--model grok-4.5` | Override model |
+### Per-domain searches (primary first)
 
-## Customize sources
+For each entry in `web_sources.primary`, then `local`, `national_nfl`, and `bears_community`, run a query like:
 
-Edit `config/sources.json` — X handles (max 20 combined) and web domains for Athletic/ESPN coverage.
+`Chicago Bears site:{domain}`
+
+Add date context in the query when the tool supports it (e.g. “past week”, “2026”, or the current month/year).
+
+### Broad queries
+
+Run each string in `broad_search_queries` from config, scoped to the lookback window.
+
+### Beat / insider names
+
+For each person in `people.national` and `people.local_beat`, run at least one query from their `search_terms` list (these catch Schefter/Rapoport/local beat stories republished on the web).
+
+### Optional
+
+One extra query if results are thin: `Chicago Bears site:nfl.com OR site:espn.com`.
+
+**Do not** rely on training memory for headlines. **Do not** scrape X/Twitter directly; insider posts often appear quoted in ESPN, PFT, Yahoo, etc.
+
+## Produce the newsletter
+
+1. Merge and dedupe findings; prefer primary/local outlets for Bears-specific angles.
+2. Write the newsletter per `newsletter_system.txt`. Set `{DATE}` to today (ISO), `{N}` to the lookback days, and estimate read time from word count.
+3. Return the full Markdown to the user unchanged (formatting intact).
+4. Save a copy to `newsletters/YYYY-MM-DD.md` when you have write access (create `newsletters/` if needed).
+
+## Flags / user intent
+
+| User says | Action |
+|-----------|--------|
+| Today / quick hit | `--days` equivalent: 1 |
+| Default digest | 3 days |
+| Weekly catch-up | 7 days |
+| More sources | Add domains in `config/sources.json` under the appropriate tier |
 
 ## Delegate
 
-For a isolated run with full context, invoke the **chicago-bears-newsletter** subagent (`/chicago-bears-newsletter` or Task tool).
+For an isolated run with full context, invoke the **chicago-bears-newsletter** subagent (`/chicago-bears-newsletter` or Task tool).
