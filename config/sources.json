@@ -1,0 +1,26 @@
+{
+  "x_handles": {
+    "national": [
+      { "handle": "AdamSchefter", "name": "Adam Schefter" },
+      { "handle": "RapSheet", "name": "Ian Rapoport" }
+    ],
+    "local": [
+      { "handle": "AdamHoge", "name": "Adam Hoge" },
+      { "handle": "AdamJahns", "name": "Adam Jahns" },
+      { "handle": "KevinFishbain", "name": "Kevin Fishbain" },
+      { "handle": "BradBiggs", "name": "Brad Biggs (Chicago Tribune)" },
+      { "handle": "CourtneyCronin", "name": "Courtney Cronin (ESPN)" }
+    ],
+    "official_and_outlets": [
+      { "handle": "CHIBears", "name": "Chicago Bears (official)" },
+      { "handle": "BearReport", "name": "The Athletic — Bear Report" }
+    ]
+  },
+  "web_domains": [
+    "theathletic.com",
+    "espn.com",
+    "chicagobears.com",
+    "nfl.com"
+  ],
+  "model": "grok-4.5"
+}

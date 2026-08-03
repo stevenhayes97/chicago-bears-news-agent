@@ -1,0 +1,8 @@
+# Generated newsletters (optional local cache)
+newsletters/*.md
+!newsletters/.gitkeep
+
+.env
+.venv/
+__pycache__/
+*.pyc
