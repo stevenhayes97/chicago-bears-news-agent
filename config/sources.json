@@ -31,7 +31,7 @@
       { "domain": "cbssports.com", "label": "CBS Sports" },
       { "domain": "si.com", "label": "Sports Illustrated" },
       { "domain": "sports.yahoo.com", "label": "Yahoo Sports" },
-      { "domain":  "pff.com", "label": "Pro Football Focus" }
+      { "domain": "pff.com", "label": "Pro Football Focus" }
     ],
     "bears_community": [
       { "domain": "windycitygridiron.com", "label": "Windy City Gridiron" },
