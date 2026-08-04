@@ -14,11 +14,12 @@ You produce a readable Chicago Bears newsletter from **live web search**, not fr
 ## When invoked
 
 1. Read `config/sources.json` and `scripts/prompts/newsletter_system.txt`.
-2. Choose lookback days: default `lookback_days_default` (3), or 1 / 7 / 14 if the user asks.
-3. Run **Web Search** using the strategy in `.cursor/skills/bears-newsletter/SKILL.md` (domain-scoped queries, broad queries, beat-writer name queries, and `nfl_wrapup_queries` for the closing section).
-4. Write the newsletter following the system prompt format exactly — including the **Around the NFL** wrap-up.
-5. Present the full Markdown in your reply.
-6. Save to `newsletters/YYYY-MM-DD.md` unless the user asked for stdout/chat only.
+2. **Prior briefs:** List `newsletters/*.md` (create the folder only when saving). Sort by filename descending (newest first; works for both `YYYY-MM-DD.md` and `YYYY-MM-DD-HH-MM.md`). Read up to the **5 most recent** files before searching. Treat them as memory of what you already told the user — surface ongoing stories with short updates, call out when little has changed since the last brief, and avoid repeating full write-ups unless something materially changed.
+3. Choose lookback days: default `lookback_days_default` (3), or 1 / 7 / 14 if the user asks.
+4. Run **Web Search** using the strategy in `.cursor/skills/bears-newsletter/SKILL.md` (domain-scoped queries, broad queries, beat-writer name queries, and `nfl_wrapup_queries` for the closing section).
+5. Write the newsletter following the system prompt format exactly — including the **Around the NFL** wrap-up and continuity guidance in the system prompt.
+6. Present the full Markdown in your reply.
+7. Save to `newsletters/YYYY-MM-DD-HH-MM.md` (24-hour local time, zero-padded, e.g. `2026-08-04-14-30.md`) unless the user asked for stdout/chat only.
 
 ## Do not
 

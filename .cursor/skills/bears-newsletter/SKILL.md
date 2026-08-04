@@ -12,6 +12,7 @@ Generates a 2–10 minute Markdown brief by searching the web and aggregating re
 
 1. Read `config/sources.json` (domains, people, broad queries, default lookback).
 2. Read `scripts/prompts/newsletter_system.txt` and follow it exactly for tone, quality bar, and output sections.
+3. **Prior briefs:** If `newsletters/` exists, list `*.md` there, sort by filename descending (newest first), and read up to the **5 most recent** files. Use them only for continuity — what was already reported, what may still be developing, and whether today’s window is mostly incremental vs. new news. Do not copy prior text verbatim.
 
 ## Search strategy
 
@@ -50,7 +51,7 @@ One extra query if results are thin: `Chicago Bears site:nfl.com OR site:espn.co
 1. Merge and dedupe findings; prefer primary/local outlets for Bears-specific angles.
 2. Write the newsletter per `newsletter_system.txt`. Set `{DATE}` to today (ISO), `{N}` to the lookback days, and estimate read time from word count.
 3. Return the full Markdown to the user unchanged (formatting intact).
-4. Save a copy to `newsletters/YYYY-MM-DD.md` when you have write access (create `newsletters/` if needed).
+4. Save a copy to `newsletters/YYYY-MM-DD-HH-MM.md` when you have write access (create `newsletters/` if needed). Use 24-hour local time, zero-padded (e.g. `2026-08-04-14-30.md`) so multiple runs the same day do not overwrite each other.
 
 ## Flags / user intent
 
