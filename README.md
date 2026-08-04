@@ -22,7 +22,7 @@ In Cursor, ask:
 
 No API keys or `pip install` required.
 
-Optional: saved copies go to `newsletters/YYYY-MM-DD.md` when the agent has write access.
+Optional: saved copies go to `newsletters/YYYY-MM-DD-HH-MM.md` (date plus 24-hour time) when the agent has write access, so multiple runs per day do not overwrite each other.
 
 ### Lookback
 
@@ -50,7 +50,7 @@ flowchart LR
   C --> E[newsletter_system.txt]
   D --> E
   E --> F[Markdown brief]
-  F --> G[newsletters/YYYY-MM-DD.md]
+  F --> G[newsletters/YYYY-MM-DD-HH-MM.md]
 ```
 
 - Search domains and queries live in `config/sources.json` (tiers: primary, local, national_nfl, bears_community).
