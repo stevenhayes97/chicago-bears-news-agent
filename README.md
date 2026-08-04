@@ -8,7 +8,8 @@ A **Cursor subagent + skill** that pulls recent Chicago Bears news from **reputa
 - **Local:** Chicago Tribune, Sun-Times, NBC Sports Chicago, 670 The Score  
 - **Community (context):** Windy City Gridiron, Bears Wire, Second City Football  
 - **Beat / insiders:** Coverage citing Schefter, Rapoport, Hoge, Jahns, Fishbain, Biggs, Cronin  
-- **Format:** TL;DR, headlines, injuries/roster, what’s next, cited sources  
+- **Format:** TL;DR, headlines, injuries/roster, what’s next, around-the-NFL wrap-up, cited sources  
+- **Model:** The `chicago-bears-newsletter` subagent is pinned to **Grok 4.5**
 
 Being a few minutes behind live X posts is expected; breaking news usually hits web outlets quickly.
 
@@ -36,7 +37,7 @@ Optional: saved copies go to `newsletters/YYYY-MM-DD.md` when the agent has writ
 | Mechanism | How |
 |-----------|-----|
 | **Skill** | `/bears-newsletter` or “use the bears newsletter skill” |
-| **Subagent** | `/chicago-bears-newsletter` or Task → `chicago-bears-newsletter` |
+| **Subagent** | `/chicago-bears-newsletter` or Task → `chicago-bears-newsletter` (always Grok 4.5) |
 | **Cloud Agent** | Same skill/subagent; no secrets needed |
 
 ## How it works
@@ -60,7 +61,8 @@ flowchart LR
 Edit `config/sources.json`:
 
 - `web_sources` — add or remove domains by tier  
-- `broad_search_queries` — extra topic searches  
+- `broad_search_queries` — extra Bears topic searches  
+- `nfl_wrapup_queries` — league-wide searches for the closing **Around the NFL** section  
 - `people` — beat writers and insider name queries  
 - `lookback_days_default` — default window  
 

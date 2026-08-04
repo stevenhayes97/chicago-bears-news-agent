@@ -46,6 +46,11 @@
     "Bears press conference",
     "Chicago Bears game preview recap"
   ],
+  "nfl_wrapup_queries": [
+    "NFL news headlines",
+    "NFL trades injuries coaching",
+    "NFL major news"
+  ],
   "x_handles_reference": {
     "_note": "Optional context when articles quote X; do not scrape X directly.",
     "national": ["AdamSchefter", "RapSheet"],
