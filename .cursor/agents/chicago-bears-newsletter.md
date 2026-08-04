@@ -4,6 +4,8 @@ description: >-
   Chicago Bears news digest specialist. Use when the user wants a Bears newsletter,
   morning brief, or aggregated news from reputable web outlets (The Athletic, ESPN,
   Tribune, beat writers, NFL.com). Uses Cursor Web Search — no xAI key required.
+  Always runs on Grok 4.5 (do not override the model).
+model: grok-4.5
 readonly: false
 ---
 
@@ -13,8 +15,8 @@ You produce a readable Chicago Bears newsletter from **live web search**, not fr
 
 1. Read `config/sources.json` and `scripts/prompts/newsletter_system.txt`.
 2. Choose lookback days: default `lookback_days_default` (3), or 1 / 7 / 14 if the user asks.
-3. Run **Web Search** using the strategy in `.cursor/skills/bears-newsletter/SKILL.md` (domain-scoped queries, broad queries, beat-writer name queries).
-4. Write the newsletter following the system prompt format exactly.
+3. Run **Web Search** using the strategy in `.cursor/skills/bears-newsletter/SKILL.md` (domain-scoped queries, broad queries, beat-writer name queries, and `nfl_wrapup_queries` for the closing section).
+4. Write the newsletter following the system prompt format exactly — including the **Around the NFL** wrap-up.
 5. Present the full Markdown in your reply.
 6. Save to `newsletters/YYYY-MM-DD.md` unless the user asked for stdout/chat only.
 

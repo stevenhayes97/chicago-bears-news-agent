@@ -35,6 +35,10 @@ Run each string in `broad_search_queries` from config, scoped to the lookback wi
 
 For each person in `people.national` and `people.local_beat`, run at least one query from their `search_terms` list (these catch Schefter/Rapoport/local beat stories republished on the web).
 
+### NFL wrap-up (closing section)
+
+Run each string in `nfl_wrapup_queries` from config (or equivalent league-wide searches) so the newsletter can end with a short **Around the NFL** section. Prefer major national outlets (`espn.com`, `nfl.com`, `national_nfl` tiers). Keep this separate from Bears-focused reporting.
+
 ### Optional
 
 One extra query if results are thin: `Chicago Bears site:nfl.com OR site:espn.com`.
@@ -60,3 +64,5 @@ One extra query if results are thin: `Chicago Bears site:nfl.com OR site:espn.co
 ## Delegate
 
 For an isolated run with full context, invoke the **chicago-bears-newsletter** subagent (`/chicago-bears-newsletter` or Task tool).
+
+**Model:** That subagent is pinned to **Grok 4.5** via its agent frontmatter (`model: grok-4.5`). When launching it with the Task tool, pass `model: "cursor-grok-4.5-high"` (or omit `model` so frontmatter applies) — do not override it with another model.
